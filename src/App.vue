@@ -2,7 +2,6 @@
  <div class="app-container">
    <!-- 头部 -->
     <mt-header fixed title="高级项目"></mt-header>
-
   <!-- 底部 -->
     <nav class="mui-bar mui-bar-tab">
 			<router-link class="mui-tab-item" to="/home">
@@ -22,7 +21,9 @@
 				<span class="mui-tab-label">搜索</span>
 			</router-link>
 		</nav>
-    <router-view></router-view>
+		<transition>
+				 <router-view></router-view>
+		</transition>
 </div>
 </template>
 
@@ -41,5 +42,20 @@
 	.app-container{
 		padding-top: 40px;
 		padding-bottom: 50px;
+		overflow-x: hidden;
+		//动画
+		.v-enter{
+				transform:translateX(100%);
+				opacity: 0;
+		}
+		.v-leave-to{
+			transform: translateX(-100%);
+			position: absolute;
+			opacity: 0;
+		}
+		.v-enter-active,
+		.v-leave-active{
+			transition:all 0.5s ease;
+		}
 	}
 </style>
